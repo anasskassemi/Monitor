@@ -2,12 +2,12 @@ name: Deploy HTML to GitHub Pages
 on:
   push:
     branches:
-      - main # Adjust to your default branch
+      - main # Adjust to your default branch (e.g., master)
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: write # Allows writing to repository contents
+  pages: write    # Allows configuring GitHub Pages
+  id-token: write # Allows authentication for deployment
 
 jobs:
   deploy:
@@ -21,12 +21,21 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true # Automatically enables Pages if not already enabled
 
       - name: Upload HTML artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./ # Adjust to the folder containing your HTML files (e.g., ./dist)
+          path: ./ # Path to your HTML files (e.g., ./ for root, ./dist for build output)
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Debug Pages Status
+        if: failure() # Runs only if a previous step fails
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/pages
