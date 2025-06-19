@@ -31,6 +31,7 @@ jobs:
           mkdir _site
           cp index.html _site/
           cp style _site/
+          
 
       - name: Verify _site contents
         run: ls -la _site
