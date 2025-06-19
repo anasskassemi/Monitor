@@ -1,0 +1,97 @@
+/* Reset some default styles */
+body, h1, h2, h3, h4, p, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Base body styling */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #2c3e50;
+    line-height: 1.8;
+    padding: 40px;
+  }
+  
+  /* Container box */
+  .container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: auto;
+    transition: all 0.3s ease;
+  }
+  
+  /* Headings */
+  h1 {
+    color: #1a73e8;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    color: #1a73e8;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+  }
+  
+  h4 {
+    margin-top: 25px;
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  /* Paragraphs */
+  p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  
+  /* Lists */
+  ul {
+    list-style: disc inside;
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+  
+  /* Code blocks */
+  pre {
+    background-color: #f0f3f7;
+    border-left: 5px solid #1a73e8;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #2d2d2d;
+    font-size: 0.95em;
+    display: block;
+  }
+  
+  /* Links (optional if you want to add them later) */
+  a {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

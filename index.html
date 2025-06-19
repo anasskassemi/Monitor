@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hand Gesture Mouse Control By Anass Kassemi</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <h1>Hand Gesture-Based Mouse Control</h1>
+  <h2>By Anass Kassemi</h2>
+  
+  <p>This project enables controlling a computer mouse using hand gestures via webcam input, leveraging MediaPipe and OpenCV.</p>
+
+  <h3>🎯 Features</h3>
+  <ul>
+    <li>Real-time hand tracking via webcam</li>
+    <li>Smooth mouse movement using linear interpolation (LERP)</li>
+    <li>Gesture recognition:</li>
+    <ul>
+      <li>Index finger up → Mouse move</li>
+      <li>Index only → Click</li>
+      <li>Two fingers → Scroll</li>
+      <li>Three fingers → Right-click</li>
+      <li>One non-index finger → Left-click</li>
+    </ul>
+  </ul>
+
+  <h3>📦 Requirements</h3>
+  <p>Install dependencies using:</p>
+  <pre><code>pip install -r requirements.txt</code></pre>
+
+  <h3>🚀 How to Run</h3>
+  <pre><code>bash run.sh</code></pre>
+  <p>or directly:</p>
+  <pre><code>python script.py</code></pre>
+
+  <h3>📁 Project Files</h3>
+  <ul>
+    <li><code>script.py</code> – Main Python script for gesture recognition and mouse control.</li>
+    <li><code>requirements.txt</code> – Python dependencies list.</li>
+    <li><code>run.sh</code> – Shell script to launch the project.</li>
+    <li><code>index.html</code> – Optional UI or project description placeholder.</li>
+  </ul>
+
+  <h4>requirements.txt</h4>
+  <pre><code>
+opencv-python
+mediapipe
+pyautogui
+  </code></pre>
+
+  <h4>run.sh</h4>
+  <pre><code>
+    python3.11 -m venv env 
+    source env/bin/activate
+    pip install --upgrade pip
+    python3.11 -m pip install -r requirements.txt 
+    
+    python3.11 script.py
+  </code></pre>
+</body>
+</html>
