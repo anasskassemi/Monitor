@@ -3,23 +3,36 @@ name: Deploy HTML to GitHub Pages
 on:
   push:
     branches:
-      - main  # or 'master' if your default branch is master
+      - main  # Change if your default branch is 'master'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout source code
+        uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Upload static files
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Change if your HTML files are in a subfolder like 'dist' or 'build'
+          path: '.'  # Adjust this if your HTML files are in a subfolder like 'dist'
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
