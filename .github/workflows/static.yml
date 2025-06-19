@@ -1,51 +1,32 @@
-name: Deploy docs.html to GitHub Pages
-
+name: Deploy HTML to GitHub Pages
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches:
+      - main # Adjust to your default branch
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Prepare docs.html
-        run: |
-          mkdir _site
-          cp index.html _site/
-
-      - name: Verify _site contents
-        run: ls -la _site
-
-      - name: Upload docs artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload HTML artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./ # Adjust to the folder containing your HTML files (e.g., ./dist)
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
